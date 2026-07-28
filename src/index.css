@@ -1,39 +1,87 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  background: #010103;
-  font-family: 'General Sans', sans-serif;
+    background: #010103;
+    font-family: 'General Sans', sans-serif;
 }
 
 @layer utilities {
-  .c-space {
-    @apply sm:px-10 px-5;
+    .c-space {
+        @apply sm:px-10 px-5;
+    }
+
+    .head-text {
+        @apply sm:text-4xl text-3xl font-semibold text-gray_gradient;
+    }
+
+    .nav-ul {
+        @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20;
+    }
+
+    .nav-li {
+        @apply text-neutral-400 hover:text-white font-generalsans max-sm:hover:bg-black-500 max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
+    }
+
+    .nav-li_a {
+        @apply text-lg md:text-base hover:text-white transition-colors;
+    }
+
+    .nav-sidebar {
+        @apply absolute left-0 right-0 bg-black-200 backdrop-blur-sm transition-all duration-300 ease-in-out overflow-hidden z-20 mx-auto sm:hidden block;
+    }
+}
+ .text-gray_gradient {
+    @apply bg-gradient-to-r from-[#BEC1CF] from-60% via-[#D5D8EA] via-60% to-[#D5D8EA] to-100% bg-clip-text text-transparent;
   }
 
-  .head-text {
-    @apply sm:text-4xl text-3xl font-semibold text-gray_gradient;
+ .hero_tag {
+    @apply text-center xl:text-6xl md:text-5xl sm:text-4xl text-3xl font-generalsans font-black !leading-normal;
   }
 
-  .nav-ul {
-    @apply flex flex-col items-center gap-4 sm:flex-row md:gap-6 relative z-20;
-  }
+.waving-hand {
+    animation-name: wave-animation;
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+}
 
-  .nav-li {
-    @apply text-neutral-400 hover:text-white font-generalsans max-sm:hover:bg-black-500 max-sm:w-full max-sm:rounded-md py-2 max-sm:px-5;
-  }
+@keyframes wave-animation {
+    0% {
+        transform: rotate(0deg);
+    }
 
-  .nav-li_a {
-    @apply text-lg md:text-base hover:text-white transition-colors;
-  }
+    15% {
+        transform: rotate(14deg);
+    }
 
-  .nav-sidebar {
-    @apply absolute left-0 right-0 bg-black-200 backdrop-blur-sm transition-all duration-300 ease-in-out overflow-hidden z-20 mx-auto sm:hidden block;
-  }
+    30% {
+        transform: rotate(-8deg);
+    }
+
+    40% {
+        transform: rotate(14deg);
+    }
+
+    50% {
+        transform: rotate(-4deg);
+    }
+
+    60% {
+        transform: rotate(10deg);
+    }
+
+    70% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
