@@ -1,4 +1,4 @@
-import gsap from 'gsap';
+import {gsap} from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useEffect, useRef, useState } from 'react';
 import { Float, useGLTF, useTexture } from '@react-three/drei';

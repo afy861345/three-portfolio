@@ -12,12 +12,14 @@ import gsap from 'gsap'
 import ReactLogo from '../components/ReactLogo'
 import Cube from '../components/Cube'
 import Rings from '../components/Rings'
+import HeroCamera from '../components/HeroCamera'
+import Button from '../components/Button'
 const suziModel = import('@pmndrs/assets/models/suzi.glb')
 const Hero = () => {
     const isSmall = useMediaQuery({ maxWidth: 440 });
     const isMobile = useMediaQuery({ maxWidth: 768 });
     const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
-    const sizes = calculateSizes(isSmall,isMobile,isTablet)
+    const sizes = calculateSizes(isSmall, isMobile, isTablet)
     const suziModel = import('@pmndrs/assets/models/suzi.glb')
 
     const AnimatedModel = () => {
@@ -61,18 +63,26 @@ const Hero = () => {
                 <Canvas className="w-full h-full">
                     <Suspense fallback={<CanvasLoader />}>
                         <PerspectiveCamera makeDefault position={[0, 0, 20]} />
-                        <HackerRoom scale={sizes.deskScale} position={sizes.deskPosition} rotation={[0.1, -Math.PI, 0]} />
-                        <OrbitControls enableZoom enablePan enableRotate />
+                        <HeroCamera isMobile={isMobile}>
+                            <HackerRoom scale={sizes.deskScale} position={sizes.deskPosition} rotation={[0.1, -Math.PI, 0]} />
+
+                        </HeroCamera>
+                        {/* <OrbitControls enableZoom enablePan enableRotate /> */}
                         <group>
-                            <AnimatedModel/>
-                            <ReactLogo position ={sizes.reactLogoPosition}/>
-                            <Cube position ={sizes.cubePosition}/>
-                            <Rings position={sizes.ringPosition}/>
+                            <AnimatedModel />
+                            <ReactLogo position={sizes.reactLogoPosition} />
+                            <Cube position={sizes.cubePosition} />
+                            <Rings position={sizes.ringPosition} />
                         </group>
                         <ambientLight intensity={1} />
                         <directionalLight position={[10, 10, 10]} intensity={0.5} />
                     </Suspense>
                 </Canvas>
+            </div>
+            <div className="absolute bottom-7 left-0 right-0 w-full z-10 c-space">
+                <a href="#about" className="w-fit">
+                    <Button name="Let's work together" isBeam containerClass="sm:w-fit w-full sm:min-w-96" />
+                </a>
             </div>
         </section>
     )

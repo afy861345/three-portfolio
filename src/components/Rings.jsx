@@ -1,6 +1,6 @@
 import { useGSAP } from '@gsap/react';
 import { useTexture } from '@react-three/drei';
-import gsap from 'gsap';
+import {gsap} from 'gsap';
 import { useCallback, useRef } from 'react';
 
 const Rings = ({ position }) => {
